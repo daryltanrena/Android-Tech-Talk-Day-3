@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TechTalkDay3</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- main activity xml values -->
+    <string name="hint_host_edit_text_view">Enter Host Here</string>
+    <string name="value_host_edit_text_view">http://api.openweathermap.org</string>
+    <string name="value_get_button">Get</string>
+    <string name="city_api_label">City Weather API:</string>
+    <string name="hint_city_edit_text_view">Enter City Here</string>
+    <string name="value_get_city_button">Get Weather for City</string>
+    <string name="coordinates_api_label">Coordinates Weather API:</string>
+    <string name="hint_latitude_edit_text_view">Enter Latitude Here</string>
+    <string name="hint_longitude_edit_text_view">Enter Longitude Here</string>
+    <string name="value_get_coordinates_button">Get Weather for Coordinates</string>
+    <string name="raw_result_api_label">Raw JSON Result:</string>
+    <string name="value_parse_result_button">Parse JSON</string>
+
+</resources>
