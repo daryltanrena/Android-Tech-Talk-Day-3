@@ -4,6 +4,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- picker activity xml values -->
+    <string name="value_go_to_bound_service_activity_button">Go to Bound Service Activity</string>
+    <string name="value_go_to_unbound_service_activity_button">Go to Unbound Service Activity</string>
+    <string name="value_go_to_web_request_activity_button">Go to Web Request Activity</string>
+
     <!-- main activity xml values -->
     <string name="hint_host_edit_text_view">Enter Host Here</string>
     <string name="value_host_edit_text_view">http://api.openweathermap.org</string>

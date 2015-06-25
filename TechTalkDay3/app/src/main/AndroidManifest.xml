@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.PickerActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +17,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".WebRequestIntentService"/>
+        <activity android:name=".activities.BoundServiceActivity"
+                  android:label="@string/app_name">
+        </activity>
+        <activity android:name=".activities.UnboundServiceActivity"
+                  android:label="@string/app_name">
+        </activity>
+        <activity android:name=".activities.WebRequestActivity"
+                  android:label="@string/app_name">
+        </activity>
+        <service android:name=".services.WebRequestIntentService"/>
+        <service android:name=".services.SoundBoundService"/>
+        <service android:name=".services.SoundUnboundService"/>
     </application>
 
 </manifest>
