@@ -31,7 +31,6 @@ public class PickerActivity extends Activity {
             public void onClick(View view) {
                 Intent intentBoundServiceActivityIntent = new Intent(getApplicationContext(), BoundServiceActivity.class);
                 startActivity(intentBoundServiceActivityIntent);
-                finish();
             }
         });
         goToUnboundServiceActivityButton.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +38,6 @@ public class PickerActivity extends Activity {
             public void onClick(View view) {
                 Intent intentUnboundServiceActivityIntent = new Intent(getApplicationContext(), UnboundServiceActivity.class);
                 startActivity(intentUnboundServiceActivityIntent);
-                finish();
             }
         });
         goToWebRequestActivityButton.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +45,6 @@ public class PickerActivity extends Activity {
             public void onClick(View view) {
                 Intent intentWebRequestActivityIntent = new Intent(getApplicationContext(), WebRequestActivity.class);
                 startActivity(intentWebRequestActivityIntent);
-                finish();
             }
         });
     }

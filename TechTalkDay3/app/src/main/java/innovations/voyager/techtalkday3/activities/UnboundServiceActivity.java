@@ -14,7 +14,7 @@ public class UnboundServiceActivity extends Activity {
 
     private ImageButton audioPauseImageButton;
     private ImageButton audioPlayImageButton;
-    private ImageButton audioRestartImageButton;
+    private ImageButton audioStopImageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class UnboundServiceActivity extends Activity {
         setContentView(R.layout.activity_sound);
         audioPauseImageButton = (ImageButton) findViewById(R.id.audioPauseImageView);
         audioPlayImageButton = (ImageButton) findViewById(R.id.audioPlayImageView);
-        audioRestartImageButton = (ImageButton) findViewById(R.id.audioRestartImageView);
+        audioStopImageButton = (ImageButton) findViewById(R.id.audioStopImageView);
         setOnclickListeners();
     }
 
@@ -42,10 +42,11 @@ public class UnboundServiceActivity extends Activity {
                 startService(unboundServiceActivityIntent);
             }
         });
-        audioRestartImageButton.setOnClickListener(new View.OnClickListener() {
+        audioStopImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buildAndSendUnboundServiceBroadcast(SoundUnboundService.RESTART_AUDIO_INTENT_ACTION_VALUE);
+                buildAndSendUnboundServiceBroadcast(SoundUnboundService
+                        .STOP_AUDIO_INTENT_ACTION_VALUE);
             }
         });
     }

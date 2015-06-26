@@ -16,7 +16,7 @@ public class SoundUnboundService extends Service {
     public static final String TAG_BROADCAST = "TAG_BROADCAST_SOUND_UNBOUND_SERVICE";
     public static final String BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY = "BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY";
     public static final String PAUSE_AUDIO_INTENT_ACTION_VALUE = "PAUSE_AUDIO_INTENT_ACTION_VALUE";
-    public static final String RESTART_AUDIO_INTENT_ACTION_VALUE = "RESTART_AUDIO_INTENT_ACTION_VALUE";
+    public static final String STOP_AUDIO_INTENT_ACTION_VALUE = "STOP_AUDIO_INTENT_ACTION_VALUE";
     private MediaPlayer audioMediaPlayer;
     private BroadcastReceiver mBroadcastReceiver;
 
@@ -35,7 +35,7 @@ public class SoundUnboundService extends Service {
             public void onReceive(Context context, Intent intent) {
                 if(PAUSE_AUDIO_INTENT_ACTION_VALUE.equals(intent.getStringExtra(BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY))) {
                     audioMediaPlayer.pause();
-                } else if(RESTART_AUDIO_INTENT_ACTION_VALUE.equals(intent.getStringExtra(BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY))) {
+                } else if(STOP_AUDIO_INTENT_ACTION_VALUE.equals(intent.getStringExtra(BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY))) {
                     audioMediaPlayer.stop();
                     audioMediaPlayer.prepareAsync();
                 }
@@ -48,10 +48,10 @@ public class SoundUnboundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId){
         Log.v(LOG_TAG, "in onStartCommand");
         audioMediaPlayer.start();
-        // START_STICKY: upon death of service, the service WILL recreate itself (intent IS NOT redelivered)
-//        return START_STICKY;
         // START_NOT_STICKY: upon death of service the service, the service WILL NOT recreate itself
         return START_NOT_STICKY;
+        // START_STICKY: upon death of service, the service WILL recreate itself (intent IS NOT redelivered)
+//        return START_STICKY;
         // START_REDELIVER_INTENT: upon death of service, the service WILL recreate itself (intent IS redelivered)
 //        return START_REDELIVER_INTENT;
     }

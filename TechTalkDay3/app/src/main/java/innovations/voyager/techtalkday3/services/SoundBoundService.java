@@ -11,8 +11,8 @@ import innovations.voyager.techtalkday3.R;
 
 public class SoundBoundService extends Service {
     private static final String LOG_TAG = "SoundBoundService";
-    MediaPlayer audioMediaPlayer;
-    private IBinder mBinder = new MyBinder();
+    private MediaPlayer audioMediaPlayer;
+    public IBinder mBinder = new MyBinder();
 
     @Override
     public void onCreate() {
@@ -51,12 +51,18 @@ public class SoundBoundService extends Service {
         audioMediaPlayer.start();
     }
 
+    public void pauseAudioPlay() {
+        audioMediaPlayer.pause();
+    }
+
+
     public void stopAudioPlay() {
         audioMediaPlayer.stop();
+        audioMediaPlayer.prepareAsync();
     }
 
     public class MyBinder extends Binder {
-        SoundBoundService getService() {
+        public SoundBoundService getService() {
             return SoundBoundService.this;
         }
     }
