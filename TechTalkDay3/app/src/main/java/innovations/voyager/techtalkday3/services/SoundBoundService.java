@@ -36,11 +36,13 @@ public class SoundBoundService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         Log.v(LOG_TAG, "in onUnbind");
+//        stopService(intent);
         return true;
     }
 
     @Override
     public void onDestroy() {
+        audioMediaPlayer.stop();
         audioMediaPlayer.release();
         super.onDestroy();
         Log.v(LOG_TAG, "in onDestroy");

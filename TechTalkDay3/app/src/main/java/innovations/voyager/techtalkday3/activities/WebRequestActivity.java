@@ -52,6 +52,10 @@ public class WebRequestActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        registerBroadcastReceiver();
+    }
+
+    private void registerBroadcastReceiver() {
         IntentFilter intentFilter = new IntentFilter(WebRequestIntentService.TAG_BROADCAST);
         mBroadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -74,19 +78,19 @@ public class WebRequestActivity extends Activity {
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                executeGetAsynchronously(true);
+                executeGetAsynchronously(false);
             }
         });
         getCityWeatherButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                executeGetCityWeatherAsynchronously(true);
+                executeGetCityWeatherAsynchronously(false);
             }
         });
         getCoordinatesWeatherButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                executeGetCoordinatesWeatherAsynchronously(true);
+                executeGetCoordinatesWeatherAsynchronously(false);
             }
         });
         parseJsonButton.setOnClickListener(new View.OnClickListener() {

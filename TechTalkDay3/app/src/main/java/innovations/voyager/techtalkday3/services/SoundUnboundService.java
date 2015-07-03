@@ -29,19 +29,7 @@ public class SoundUnboundService extends Service {
         super.onCreate();
         Log.v(LOG_TAG, "in onCreate");
         audioMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.mashup);
-        IntentFilter intentFilter = new IntentFilter(SoundUnboundService.TAG_BROADCAST);
-        mBroadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if(PAUSE_AUDIO_INTENT_ACTION_VALUE.equals(intent.getStringExtra(BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY))) {
-                    audioMediaPlayer.pause();
-                } else if(STOP_AUDIO_INTENT_ACTION_VALUE.equals(intent.getStringExtra(BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY))) {
-                    audioMediaPlayer.stop();
-                    audioMediaPlayer.prepareAsync();
-                }
-            }
-        };
-        this.registerReceiver(mBroadcastReceiver, intentFilter);
+        registerBroadcastReceiver();
     }
 
     @Override
@@ -64,4 +52,19 @@ public class SoundUnboundService extends Service {
         Log.v(LOG_TAG, "in onDestroy");
     }
 
+    private void registerBroadcastReceiver() {
+        IntentFilter intentFilter = new IntentFilter(SoundUnboundService.TAG_BROADCAST);
+        mBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if(PAUSE_AUDIO_INTENT_ACTION_VALUE.equals(intent.getStringExtra(BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY))) {
+                    audioMediaPlayer.pause();
+                } else if(STOP_AUDIO_INTENT_ACTION_VALUE.equals(intent.getStringExtra(BROADCAST_UNBOUND_SERVICE_INTENT_ACTION_KEY))) {
+                    audioMediaPlayer.stop();
+                    audioMediaPlayer.prepareAsync();
+                }
+            }
+        };
+        this.registerReceiver(mBroadcastReceiver, intentFilter);
+    }
 }

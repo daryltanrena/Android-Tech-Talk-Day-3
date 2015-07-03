@@ -8,6 +8,7 @@ import innovations.voyager.techtalkday3.utils.WebUtil;
 
 public class WebRequestIntentService extends IntentService {
 
+    private static final String LOG_TAG = "WebRequestIntentService";
     public static final String TAG_BROADCAST = "TAG_BROADCAST_WEB_REQUEST_INTENT_SERVICE";
     public static final String GET_WEATHER_API_ACTION = "GET_WEATHER_API_ACTION";
     public static final String GET_WEATHER_API_URL_KEY_INTENT_EXTRA = "GET_WEATHER_API_URL_KEY_INTENT_EXTRA";
@@ -32,5 +33,11 @@ public class WebRequestIntentService extends IntentService {
         replyBroadcast.putExtra(RESPONSE_ACTION_KEY_INTENT_EXTRA, actionType);
         replyBroadcast.putExtra(keyExtra, value);
         sendBroadcast(replyBroadcast);
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d(LOG_TAG, "onDestroy");
+        super.onDestroy();
     }
 }
